@@ -192,6 +192,10 @@ namespace NetAdaptorControl
         {
             RefreshAllDevices();
             notifyIcon1.Visible = true;
+            if(listView1.Items.Count > 0)
+            {
+                listView1.Items[0].Selected = true;
+            }
         }
     }
 

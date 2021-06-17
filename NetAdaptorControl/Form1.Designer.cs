@@ -47,7 +47,7 @@ namespace NetAdaptorControl
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(111, 36);
-            this.button1.TabIndex = 0;
+            this.button1.TabIndex = 1;
             this.button1.Text = "刷新设备";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -64,7 +64,7 @@ namespace NetAdaptorControl
             this.listView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(744, 356);
-            this.listView1.TabIndex = 1;
+            this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
