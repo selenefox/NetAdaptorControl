@@ -91,13 +91,14 @@ namespace NetAdaptorControl
                     }
 
                 }
-                */
+                //*/
                 string Manufacturer = mo["Manufacturer"].ToString();
                 string DeviceId = mo["DeviceID"].ToString();
                 string NetConnectionID = mo["NetConnectionID"].ToString();
                 string ProductName = mo["ProductName"].ToString();
+                string MACAddress = mo["MACAddress"].ToString();
 
-                Trace.TraceInformation("Manufacturer={0}, ProductName={1}, NetConnectionID={2}, DeviceId={3}", Manufacturer, ProductName, NetConnectionID, DeviceId);
+                Trace.TraceInformation("Manufacturer={0}, ProductName={1}, NetConnectionID={2}, DeviceId={3}, MACAddress={4}", Manufacturer, ProductName, NetConnectionID, DeviceId, MACAddress);
 
                 listView1.Items.Add(new NetAdaptorListViewItem().BindData(new NetAdapteorInfo(DeviceId,NetConnectionID, Manufacturer, ProductName)));
                 
