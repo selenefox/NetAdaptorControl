@@ -51,8 +51,8 @@ namespace NetAdaptorControl
         {
             //NetAdaptorControl.Ne
             //获取说有网卡信息
-            NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
-            foreach (NetworkInterface adapter in nics)
+            var nics = NetworkInterface.GetAllNetworkInterfaces();
+            foreach (var adapter in nics)
             {
                 Console.WriteLine("All ::" + adapter.Name);
                 //判断是否为以太网卡
@@ -69,7 +69,7 @@ namespace NetAdaptorControl
             }
         }
 
-        public void RefreshAllDevices()
+        private void RefreshAllDevices()
         {
             
             listView1.BeginUpdate();
@@ -92,11 +92,11 @@ namespace NetAdaptorControl
 
                 }
                 //*/
-                string Manufacturer = mo["Manufacturer"].ToString();
-                string DeviceId = mo["DeviceID"].ToString();
-                string NetConnectionID = mo["NetConnectionID"].ToString();
-                string ProductName = mo["ProductName"].ToString();
-                string MACAddress = mo["MACAddress"].ToString();
+                var Manufacturer = mo["Manufacturer"].ToString();
+                var DeviceId = mo["DeviceID"].ToString();
+                var NetConnectionID = mo["NetConnectionID"].ToString();
+                var ProductName = mo["ProductName"].ToString();
+                var MACAddress = mo["MACAddress"].ToString();
 
                 Trace.TraceInformation("Manufacturer={0}, ProductName={1}, NetConnectionID={2}, DeviceId={3}, MACAddress={4}", Manufacturer, ProductName, NetConnectionID, DeviceId, MACAddress);
 
@@ -111,13 +111,13 @@ namespace NetAdaptorControl
         /// 启用所有适配器
         /// </summary>
         /// <returns></returns>
-        public void EnableAdapterByDeviceId(string DeviceId)
+        private void EnableAdapterByDeviceId(string deviceId)
         {
             System.Management.ManagementObjectSearcher moc = new System.Management.ManagementObjectSearcher("Select * from Win32_NetworkAdapter where NetEnabled!=null ");
             foreach (System.Management.ManagementObject mo in moc.Get())
             {
                 string did = mo["DeviceID"].ToString();
-                if (did.Equals(DeviceId))
+                if (did.Equals(deviceId))
                 {
                     mo.InvokeMethod("Enable", null);
                     break;
@@ -128,13 +128,13 @@ namespace NetAdaptorControl
         /// <summary>
         /// 禁用所有适配器
         /// </summary>
-        public void DisableAdapterByDeviceId(string DeviceId)
+        private void DisableAdapterByDeviceId(string deviceId)
         {
             System.Management.ManagementObjectSearcher moc = new System.Management.ManagementObjectSearcher("Select * from Win32_NetworkAdapter where NetEnabled!=null ");
             foreach (System.Management.ManagementObject mo in moc.Get())
             {
                 string did = mo["DeviceID"].ToString();
-                if (did.Equals(DeviceId))
+                if (did.Equals(deviceId))
                 {
                     mo.InvokeMethod("Disable", null);
                     break;
